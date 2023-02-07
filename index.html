@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet">
+
     <title>Shopping Tracking App</title>
     <link rel="stylesheet" href="main.css" />
 </head>
@@ -15,8 +19,11 @@
     <form id="item-form">
 
         <div class="name-box">
-            <label for="item-name" class="name-form">Name :</label>
-            <input id="item-name" type="text" placeholder="Input item name" />
+            <h1>
+                Nice to see you,
+                <input id="name-user" type="text" value="User" />
+            </h1>
+            <input id="name-item" type="text" placeholder="Input item name" />
         </div>
 
         <div class="pq-box">
@@ -36,10 +43,10 @@
                     value="1"
                     />
             </label>
+            
         </div>
-
+        
         <input class="add-item" type="submit" value="Add item"/>
-
     </form>
 
     <div id="item-list">
