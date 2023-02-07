@@ -13,7 +13,7 @@
 </head>
 <body>
     <nav>
-        <h1>Shopping Tracking</h1>
+        <h1>Shopping</h1>
     </nav>
 
     <form id="item-form">
@@ -49,12 +49,15 @@
         <input class="add-item" type="submit" value="Add item"/>
     </form>
 
+    
     <div id="item-list">
-        <div class="list-bar">
-            <h2>Item List</h2>
-            <button class="clear-all">Clear All</button>
-        </div>
 
+        <div class="list-header">
+            <h1>Item List</h1>
+            <hr>
+            <button id="clear-all">Clear All</button>
+        </div>
+        
         <div class="item">
 
             <input type="checkbox" id="checkbox" />
