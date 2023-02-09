@@ -4,6 +4,8 @@
     --darkest: #111827;
     --gray: #6B7280;
     --light: #EEE;
+    --blue: #3aace0;
+    --pink: #c853c1;
 }
 
 * {
@@ -63,7 +65,7 @@ nav h1{
     font-size: 1.3rem;
     font-weight: 300;
     font-style: italic;
-    background-color: var(--darker);
+    background-color: transparent;
     color: var(--gray);
     border: none;
     outline: none;
@@ -105,23 +107,22 @@ nav h1{
 #item-form .add-item {
     padding: 0.5rem;
     margin: auto;
-    background-color: var(--dark);
-    color: var(--gray);
-    border: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    background-color: transparent;
+    color: var(--blue);
+    border: 0.5px solid;
     border-radius: 0.5rem;
+    cursor: pointer;
+    transition: 0.1s;
 }
 
 #item-form .add-item:active {
-    color: var(--light);
+    opacity: 0.6;
 }
 
-#item-list {
-    margin: 0 1rem;
-    display: flex;
-    flex-direction: column;
-}
 
-#item-list .list-header {
+.list-header {
     display: flex;
     margin-bottom: 1rem;
 }
@@ -144,13 +145,26 @@ nav h1{
     align-self: center;
 }
 
-.list-header button {
+.list-header .clear-all {
     padding: 0.5rem;
-    margin: auto 1rem;
+    margin: auto 1.5rem;
     background-color: transparent;
-    border: none;
-    color: crimson;
-    font-size: 1rem;
+    border: 0.5px solid;
+    border-radius: 0.5rem;
+    color: #aa1e3a;
+    font-size: 0.9rem;
+    transition: 0.1s;
+    cursor: pointer;
+}
+
+.list-header .clear-all:active {
+    opacity: 0.6;
+}
+
+#item-list {
+    margin: 0 1rem;
+    display: flex;
+    flex-direction: column;
 }
 
 #item-list .item {
