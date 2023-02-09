@@ -48,19 +48,21 @@
         
         <input class="add-item" type="submit" value="Add item"/>
     </form>
-
     
-    <div id="item-list">
+    <div class="list-header">
+        <h1>Item List</h1>
+        <hr>
+        <button class="clear-all" id="clear-all">Clear All</button>
+    </div>
 
-        <div class="list-header">
-            <h1>Item List</h1>
-            <hr>
-            <button id="clear-all">Clear All</button>
-        </div>
-        
+    <div id="item-list">
+    
         <div class="item">
 
-            <input type="checkbox" id="checkbox" />
+            <input
+                type="checkbox"
+                id="checkbox"
+                />
 
             <div class="content">
                 <div class="name-content">
