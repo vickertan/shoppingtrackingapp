@@ -17,24 +17,18 @@
     </nav>
 
     <form id="item-form">
-
-        <div class="name-box">
-            <p>
-                Nice to see you,
-                <input
-                id="name-user"
-                type="text"
-                value="User"
-                />
-            </p>
-
+        <div class="nb-box">
             <input
                 id="name-item"
                 type="text"
                 placeholder="Input item name"
                 />
+            <input
+                class="add-item"
+                type="submit"
+                value="Add item"
+                />
         </div>
-
         <div class="pq-box">
             <label class="price-form">
                 Price per item :
@@ -52,10 +46,7 @@
                     value="1"
                     />
             </label>
-            
         </div>
-        
-        <input class="add-item" type="submit" value="Add item"/>
     </form>
     
     <div class="list-header">
@@ -65,36 +56,51 @@
     </div>
 
     <div id="item-list">
-    
         <div class="item">
-
-            <input
-                type="checkbox"
-                id="checkbox"
-                />
-
+            <label>
+                <input
+                    type="checkbox"
+                    id="checkbox"
+                    />
+                <span class="bubble"></span>
+            </label>
             <div class="content">
-                <div class="name-content">
-                    <p>Milk</p>
-                </div>
-
-                <div class="pq-content">
-                    <p>$12</p>
-                    <p>x 2</p>
-                </div>
+                <p class="name-content">Milk</p>
+                <p class="price-content">$12</p>
+                <p class="quantity-content">x 2</p>
             </div>
-
-            <div class="button">
-                <button class="edit">Edit</button>
-                <button class="delete">Delete</button>
+            <div class="actions">
+                <button class="edit">EDIT</button>
+                <button class="delete">X</button>
             </div>
-            
         </div>
 
+        <div class="item">
+            <label>
+                <input
+                    type="checkbox"
+                    id="checkbox"
+                    />
+                <span class="bubble"></span>
+            </label>
+            <div class="content">
+                <p class="name-content">Shampoo</p>
+                <p class="price-content">$20</p>
+                <p class="quantity-content">x 1</p>
+            </div>
+            <div class="actions">
+                <button class="edit">EDIT</button>
+                <button class="delete">X</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="price-line">
+        <hr>
     </div>
 
     <div class="total-price">
-        <p>Total price : $24</p>
+        <p>Total price : $44</p>
     </div>
 </body>
 </html>
