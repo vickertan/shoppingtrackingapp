@@ -192,7 +192,6 @@ input:checked ~ .bubble::after {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
     color: var(--gray);
-    transition: 0.4s;
 }
 
 .item .purchased {
