@@ -6,7 +6,7 @@ const itemList = document.querySelector("#item-list");
 const totalPriceDiv = document.querySelector("#total-price");
 
 const createItemDiv = async () => {
-    const allItems = await db.items.toArray();
+    const allItems = await db.items.reverse().toArray();
 
     itemList.innerHTML = allItems.map(item => `
     <div class="item">
@@ -26,13 +26,18 @@ const createItemDiv = async () => {
         </div>
         <div class="actions">
             <button class="edit">EDIT</button>
-            <button class="delete">X</button>
+            <button class="delete" onclick="removeItem(${item.id})">X</button>
         </div>
     </div>
-    `);
+    `).join('');
+
+    const priceArray = allItems.map(item => item.price * item.quantity);
+    const totalPrice = priceArray.reduce((a, b) => a + b, 0); 
 
     totalPriceDiv.innerText = 'Total Price : $' + totalPrice;
 }
+
+window.onload = createItemDiv();
 
 itemForm.onsubmit = async (e) => {
     e.preventDefault();
@@ -45,4 +50,18 @@ itemForm.onsubmit = async (e) => {
     await createItemDiv();
 
     itemForm.reset();
+}
+
+const removeAllItem = async () => {
+    
+}
+
+const removeItem = async (id) => {
+    await db.items.delete(id);
+    await createItemDiv();
+}
+
+const toggleItemStatus = async (event, id) => {
+    await db.items.update(id, { purchased: event.target.checked });
+    await createItemDiv();
 }
