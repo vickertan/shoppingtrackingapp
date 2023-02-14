@@ -18,7 +18,7 @@
         <h1>Shopping</h1>
     </nav>
 
-    <form id="item-form">
+    <form id="item-form" autocomplete="off">
         <div class="nb-box">
             <input
                 id="item-name"
@@ -72,9 +72,24 @@
                 <span class="bubble"></span>
             </label>
             <div class="content">
-                <p class="name-content">Milk</p>
-                <p class="price-content">$12</p>
-                <p class="quantity-content">x 2</p>
+                <input
+                    type="text"
+                    class="name-content"
+                    value="Shampoo"
+                    readonly
+                    />
+                <input
+                    type="number"
+                    class="price-content"
+                    value="0"
+                    readonly
+                    />
+                <input
+                    type="number"
+                    class="quantity-content"
+                    value="1"
+                    readonly
+                    /> 
             </div>
             <div class="actions">
                 <button class="edit">EDIT</button>
@@ -91,9 +106,24 @@
                 <span class="bubble"></span>
             </label>
             <div class="content purchased">
-                <p class="name-content">Shampoo</p>
-                <p class="price-content">$20</p>
-                <p class="quantity-content">x 1</p>
+                <input
+                    type="text"
+                    class="name-content"
+                    value="Milk"
+                    readonly
+                    />
+                <input
+                    type="number"
+                    class="price-content"
+                    value="0"
+                    readonly
+                    />
+                <input
+                    type="number"
+                    class="quantity-content"
+                    value="1"
+                    readonly
+                    />
             </div>
             <div class="actions">
                 <button class="edit">EDIT</button>
