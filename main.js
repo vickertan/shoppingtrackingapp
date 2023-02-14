@@ -53,7 +53,8 @@ itemForm.onsubmit = async (e) => {
 }
 
 const removeAllItem = async () => {
-    
+    await db.items.clear();
+    await createItemDiv();
 }
 
 const removeItem = async (id) => {
@@ -65,3 +66,4 @@ const toggleItemStatus = async (event, id) => {
     await db.items.update(id, { purchased: event.target.checked });
     await createItemDiv();
 }
+
