@@ -191,7 +191,15 @@ input:checked ~ .bubble::after {
     margin-left: 1rem;
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
-    color: var(--gray);
+}
+
+.item .content input {
+    margin-top: 1.5px;
+    min-width: 1rem;
+    color: gray;
+    background-color: transparent;
+    outline: none;
+    border: none;
 }
 
 .item .purchased {
@@ -199,7 +207,8 @@ input:checked ~ .bubble::after {
 }
 
 .item .actions {
-    margin-right: 0.5rem;
+    margin: 0.5px 0.5rem 0 0;
+    min-width: max-content;
 }
 
 .item .actions button {
