@@ -194,7 +194,7 @@ input:checked ~ .bubble::after {
 }
 
 .item .content input {
-    margin-top: 1.5px;
+    margin-top: 1px;
     min-width: 1rem;
     color: gray;
     background-color: transparent;
@@ -202,12 +202,16 @@ input:checked ~ .bubble::after {
     border: none;
 }
 
+.item .content input:not(:read-only) {
+    color: var(--blue);
+}
+
 .item .purchased {
     opacity: 0.3;
 }
 
 .item .actions {
-    margin: 0.5px 0.5rem 0 0;
+    margin: 1px 0.5rem 0 0;
     min-width: max-content;
 }
 
@@ -226,6 +230,7 @@ input:checked ~ .bubble::after {
     font-weight: 700;
     border: none;
     cursor: pointer;
+    min-width: 3rem;
 }
 
 .actions .delete {
