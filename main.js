@@ -22,25 +22,31 @@ const createItemDiv = async () => {
         <div class="content ${item.purchased && 'purchased'}">
             <input
                 type="text"
-                class="name-content"
                 id="name-content"
                 value="${item.name}"
+                autocomplete="off"
                 ${!item.readonly && 'readonly'}
                 />
-            <input
-                type="text"
-                class="price-content"
-                id="price-content"
-                value="$${item.price}"
-                ${!item.readonly && 'readonly'}
-                />
-            <input
-                type="text"
-                class="quantity-content"
-                id="quantity-content"
-                value="x ${item.quantity}"
-                ${!item.readonly && 'readonly'}
-                />
+            <div class="price-box">
+                <span>$</span>
+                <input
+                    type="number"
+                    id="price-content"
+                    value="${item.price}"
+                    autocomplete="off"
+                    ${!item.readonly && 'readonly'}
+                    />
+            </div>
+            <div class="quantity-box">
+                <span>x</span>
+                <input
+                    type="number"
+                    id="quantity-content"
+                    value="${item.quantity}"
+                    autocomplete="off"
+                    ${!item.readonly && 'readonly'}
+                    />
+            </div>
         </div>
         <div class="actions">
             <button class="edit" onclick="toggleEdit(event, ${item.id})">${item.buttonText}</button>
@@ -69,7 +75,6 @@ itemForm.onsubmit = async (e) => {
         quantity: quantityInput,
         price: priceInput,
         buttonText: "EDIT",
-        nameEdit: ""
     });
 
     await createItemDiv();
@@ -83,18 +88,22 @@ const removeAllItem = async () => {
 }
 
 const toggleEdit = (event, id) => {
-    const nameContent = event.target.parentElement.parentElement.querySelector('.content').querySelector('.name-content').value;
+    const nameContent = event.target.parentElement.parentElement.querySelector('.content').querySelector('#name-content');
+    const priceContent = event.target.parentElement.parentElement.querySelector('.content').querySelector('#price-content');
+    const quantityContent = event.target.parentElement.parentElement.querySelector('.content').querySelector('#quantity-content');
 
     if (event.target.innerHTML == "EDIT") {
         db.items.update(id, { buttonText: "SAVE" });
         db.items.update(id, { readonly: true });
-        // db.items.update(id, { nameEdit: })
-        console.log(nameContent);
+
         createItemDiv();
     } else {
+        db.items.update(id, { name: nameContent.value });
+        db.items.update(id, { price: priceContent.value });
+        db.items.update(id, { quantity: quantityContent.value });
         db.items.update(id, { buttonText: "EDIT" });
         db.items.update(id, { readonly: false });
-        console.log(nameContent);
+
         createItemDiv();
     }
 }
