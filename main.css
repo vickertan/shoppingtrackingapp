@@ -202,6 +202,22 @@ input:checked ~ .bubble::after {
     border: none;
 }
 
+.item .content input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.item .content div {
+    display: flex;
+    flex-direction: row;
+    min-width: 2rem;
+    margin: 0 0.5rem;
+}
+
+.item .content div span {
+    margin-right: 3px;
+    color: var(--gray);
+}
+
 .item .content input:not(:read-only) {
     color: var(--blue);
 }
