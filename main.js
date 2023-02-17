@@ -6,62 +6,69 @@ const itemList = document.querySelector("#item-list");
 const totalPriceDiv = document.querySelector("#total-price");
 
 const createItemDiv = async () => {
-    const allItems = await db.items.reverse().toArray();
+    allItems = await db.items.reverse().toArray();
 
-    itemList.innerHTML = allItems.map(item => `
-    <div class="item">
-        <label>
-            <input
-                type="checkbox"
-                id="checkbox"
-                onchange="toggleStatus(event, ${item.id})"
-                ${item.purchased && 'checked'}
-                />
-            <span class="bubble"></span>
-        </label>
-        <div class="content ${item.purchased && 'purchased'}">
-            <input
-                type="text"
-                id="name-content"
-                value="${item.name}"
-                placeholder="none"
-                autocomplete="off"
-                ${!item.readonly && 'readonly'}
-                />
-            <div class="price-box">
-                <span>$</span>
-                <input
-                    type="number"
-                    id="price-content"
-                    value="${item.price || (item.price = 0)}"
-                    autocomplete="off"
-                    ${!item.readonly && 'readonly'}
-                    />
+    if (allItems.length !== 0) {    
+        itemList.innerHTML = allItems.map(item => `
+            <div class="item">
+                <label>
+                    <input
+                        type="checkbox"
+                        id="checkbox"
+                        onchange="toggleStatus(event, ${item.id})"
+                        ${item.purchased && 'checked'}
+                        />
+                    <span class="bubble"></span>
+                </label>
+                <div class="content ${item.purchased && 'purchased'}">
+                    <input
+                        type="text"
+                        id="name-content"
+                        value="${item.name}"
+                        placeholder="none"
+                        autocomplete="off"
+                        ${!item.readonly && 'readonly'}
+                        />
+                    <div class="price-box">
+                        <span>$</span>
+                        <input
+                            type="number"
+                            id="price-content"
+                            value="${parseInt(item.price) || (item.price = 0)}"
+                            autocomplete="off"
+                            ${!item.readonly && 'readonly'}
+                            />
+                    </div>
+                    <div class="quantity-box">
+                        <span>x</span>
+                        <input
+                            type="number"
+                            id="quantity-content"
+                            value="${parseInt(item.quantity) || (item.quantity = 1)}"
+                            autocomplete="off"
+                            ${!item.readonly && 'readonly'}
+                            />
+                    </div>
+                </div>
+                <div class="actions">
+                    <button class="edit" onclick="toggleEdit(event, ${item.id})">${item.buttonText}</button>
+                    <button class="delete" onclick="confirmRemove(event, ${item.id})">X</button>
+                </div>
             </div>
-            <div class="quantity-box">
-                <span>x</span>
-                <input
-                    type="number"
-                    id="quantity-content"
-                    value="${item.quantity || (item.quantity = 1)}"
-                    autocomplete="off"
-                    ${!item.readonly && 'readonly'}
-                    />
-            </div>
-        </div>
-        <div class="actions">
-            <button class="edit" onclick="toggleEdit(event, ${item.id})">${item.buttonText}</button>
-            <button class="delete" onclick="confirmRemove(event, ${item.id})">X</button>
-        </div>
-    </div>
-    `).join('');
+        `).join('');
+    } else {
+        itemList.innerHTML = `
+            <p class="empty-message1">Your list is empty.</p>
+            <p class="empty-message2">Add some items to get started!</p>
+        `;
+    }
 
     const uncheckedItems = allItems.filter(item => item.purchased === false);
 
     const priceArray = uncheckedItems.map(item => item.price * item.quantity);
     const totalPrice = priceArray.reduce((a, b) => a + b, 0); 
 
-    totalPriceDiv.innerText = 'Total Price : $' + totalPrice;
+    totalPriceDiv.innerText = 'Total price : $' + totalPrice;
 }
 
 window.onload = createItemDiv();
@@ -86,10 +93,12 @@ itemForm.onsubmit = async (e) => {
     itemForm.reset();
 }
 
-const removeAllItem = () => {
-    if (prompt("Type 'clear-all' to remove all items from list") === "clear-all") {
-        db.items.clear();
-        createItemDiv();
+const clearAll = () => {
+    if (allItems.length !== 0) {
+        if (prompt("Type 'clear-all' to remove all items from list") === "clear-all") {
+            db.items.clear();
+            createItemDiv();
+        }
     }
 }
 
