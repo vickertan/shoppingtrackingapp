@@ -24,6 +24,7 @@ const createItemDiv = async () => {
                 type="text"
                 id="name-content"
                 value="${item.name}"
+                placeholder="none"
                 autocomplete="off"
                 ${!item.readonly && 'readonly'}
                 />
@@ -32,7 +33,7 @@ const createItemDiv = async () => {
                 <input
                     type="number"
                     id="price-content"
-                    value="${item.price}"
+                    value="${item.price || (item.price = 0)}"
                     autocomplete="off"
                     ${!item.readonly && 'readonly'}
                     />
@@ -42,7 +43,7 @@ const createItemDiv = async () => {
                 <input
                     type="number"
                     id="quantity-content"
-                    value="${item.quantity}"
+                    value="${item.quantity || (item.quantity = 1)}"
                     autocomplete="off"
                     ${!item.readonly && 'readonly'}
                     />
@@ -50,12 +51,14 @@ const createItemDiv = async () => {
         </div>
         <div class="actions">
             <button class="edit" onclick="toggleEdit(event, ${item.id})">${item.buttonText}</button>
-            <button class="delete" onclick="removeItem(${item.id})">X</button>
+            <button class="delete" onclick="confirmRemove(event, ${item.id})">X</button>
         </div>
     </div>
     `).join('');
 
-    const priceArray = allItems.map(item => item.price * item.quantity);
+    const uncheckedItems = allItems.filter(item => item.purchased === false);
+
+    const priceArray = uncheckedItems.map(item => item.price * item.quantity);
     const totalPrice = priceArray.reduce((a, b) => a + b, 0); 
 
     totalPriceDiv.innerText = 'Total Price : $' + totalPrice;
@@ -74,6 +77,7 @@ itemForm.onsubmit = async (e) => {
         name: nameInput,
         quantity: quantityInput,
         price: priceInput,
+        purchased: false,
         buttonText: "EDIT",
     });
 
@@ -82,9 +86,11 @@ itemForm.onsubmit = async (e) => {
     itemForm.reset();
 }
 
-const removeAllItem = async () => {
-    await db.items.clear();
-    await createItemDiv();
+const removeAllItem = () => {
+    if (prompt("Type 'clear-all' to remove all items from list") === "clear-all") {
+        db.items.clear();
+        createItemDiv();
+    }
 }
 
 const toggleEdit = (event, id) => {
@@ -95,7 +101,7 @@ const toggleEdit = (event, id) => {
     if (event.target.innerHTML == "EDIT") {
         db.items.update(id, { buttonText: "SAVE" });
         db.items.update(id, { readonly: true });
-
+        
         createItemDiv();
     } else {
         db.items.update(id, { name: nameContent.value });
@@ -108,9 +114,18 @@ const toggleEdit = (event, id) => {
     }
 }
 
-const removeItem = async (id) => {
-    await db.items.delete(id);
-    await createItemDiv();
+const confirmRemove = (event, id) => {
+    const nameContent = event.target.parentElement.parentElement.querySelector('.content').querySelector('#name-content');
+    
+    if (nameContent.value != "") {
+        if (confirm(`Are you sure you want to remove ${nameContent.value} from list?`)) {
+            db.items.delete(id);
+            createItemDiv();
+        }
+    } else {
+        db.items.delete(id);
+        createItemDiv();
+    }
 }
 
 const toggleStatus = async (event, id) => {
