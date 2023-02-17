@@ -146,6 +146,18 @@ nav h1{
     flex-direction: column;
 }
 
+#item-list .empty-message1 {
+    margin: 5px auto 10px;
+    color: var(--gray);
+    font-size: 0.8rem;
+}
+
+#item-list .empty-message2 {
+    margin: 5px auto auto;
+    color: var(--gray);
+    font-size: 0.8rem;
+}
+
 #item-list .item {
     display: flex;
     margin-top: 0.5rem;
@@ -199,10 +211,13 @@ input:checked ~ .bubble::after {
     background-color: transparent;
     outline: none;
     border: none;
+    font-size: 0.8rem;
 }
 
 .item .content #name-content::placeholder {
     color: var(--red);
+    font-style: italic;
+    opacity: 0.8;
 }
 
 .item .content input::-webkit-inner-spin-button {
@@ -217,8 +232,9 @@ input:checked ~ .bubble::after {
 }
 
 .item .content div span {
-    margin-right: 3px;
+    margin: auto 3px 0 0;
     color: var(--gray);
+    font-size: 0.8rem;
 }
 
 .item .content input:not(:read-only) {
