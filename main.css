@@ -159,7 +159,7 @@ input[type="checkbox"] {
     display: none;
 }
 
-.bubble {
+.item .bubble {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -169,12 +169,11 @@ input[type="checkbox"] {
     border-radius: 50%;
 }
 
-.bubble::after {
+.item .bubble::after {
     content: "";
     display: block;
     width: 0;
     height: 0;
-    opacity: 0;
     background-color: var(--red);
     transition: 0.3s ease-in-out;
 }
@@ -200,6 +199,10 @@ input:checked ~ .bubble::after {
     background-color: transparent;
     outline: none;
     border: none;
+}
+
+.item .content #name-content::placeholder {
+    color: var(--red);
 }
 
 .item .content input::-webkit-inner-spin-button {
