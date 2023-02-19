@@ -4,7 +4,7 @@ I made this project to learn how to make a Progressive Web App (PWA), which is a
 
 I was inspired to make this project again after finishing the Youtube course of making a PWA, and I would like to do it with additional features, functionalities, and a better design.
 
-Check out my first PWA's repo here: [Shopping Record App](https://github.com/vickertan/shoppingapp-pwa)
+Check out my first PWA's repo here: [Shopping Record App Repository](https://github.com/vickertan/shoppingapp-pwa)
 
 # Features
 
