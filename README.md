@@ -12,7 +12,7 @@ You can use this app to track your shopping expenses. You can add item, edit exi
 
 # How to use
 
-This app is hosted on GitHub Pages and you can access it here:
-[Shopping Tracking App](https://vickertan.github.io/shoppingtrackingapp/)
+This project is hosted on Vercel and you can access it here:
+[Shopping Tracking App](shoppingtrackingapp.vercel.app)
 
 You will then be prompted to add it to the home screen, or you can install it from the browser menu (three dots on the top right corner).
