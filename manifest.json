@@ -16,7 +16,7 @@
     ],
     "theme_color": "#FFF",
     "background_color": "#FFF",
-    "start_url": "/shoppingtrackingapp/",
+    "start_url": "https://shoppingtrackingapp.vercel.app/",
     "display": "standalone",
     "orientation": "portrait"
 }
