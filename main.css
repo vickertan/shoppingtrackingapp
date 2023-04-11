@@ -256,10 +256,15 @@ input:checked ~ .bubble::after {
     margin-left: 0.5rem;
     padding: 0.3rem;
     background-color: transparent;
+    transition: 0.4s;
 }
 
 .actions button:hover {
     opacity: 0.8;
+}
+
+.actions button:active {
+    opacity: 0.5;
 }
 
 .actions .edit {
