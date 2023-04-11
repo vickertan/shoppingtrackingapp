@@ -270,7 +270,7 @@ input:checked ~ .bubble::after {
 }
 
 .actions .delete {
-    color: white;
+    color: var(--red);
     border: none;
     font-weight: 700;
 }
