@@ -1,91 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;700&display=swap" rel="stylesheet">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;700&display=swap"
+            rel="stylesheet"
+        />
 
-    <title>Shopping Tracking App</title>
-    <link rel="icon" href="./icons/manifest-icon-192.maskable.png">
-    <link rel="stylesheet" href="./main.css" />
-    <link rel="manifest" href="./manifest.json" />
+        <title>Shopping Tracking App</title>
+        <link rel="icon" href="./icons/manifest-icon-192.maskable.png" />
+        <link rel="stylesheet" href="./main.css" />
+        <link rel="manifest" href="./manifest.json" />
 
-    <script src="./dexie.min.js"></script>
+        <script src="./dexie.min.js"></script>
 
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./sw.js');
-            })
-        }
-    </script>
+        <script>
+            if ("serviceWorker" in navigator) {
+                window.addEventListener("load", () => {
+                    navigator.serviceWorker.register("./sw.js");
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <nav>
+            <h1>Shopping</h1>
+        </nav>
 
-</head>
-<body>
-    <nav>
-        <h1>Shopping</h1>
-    </nav>
-
-    <form id="item-form" autocomplete="off">
-        <div class="nb-box">
-            <input
-                id="item-name"
-                type="text"
-                placeholder="Input item name"
-                />
-            <input
-                class="add-item"
-                type="submit"
-                value="Add item"
-                />
-        </div>
-        <div class="pq-box">
-            <label class="price-form">
-                Price per item
+        <form id="item-form" autocomplete="off">
+            <div class="nb-box">
                 <input
-                    id="item-price"
-                    type="number"
-                    value="0"
-                    />
-            </label>
-            <label class="quantity-form">
-                Quantity
-                <input
-                    id="item-quantity"
-                    type="number"
-                    value="1"
-                    />
-            </label>
-        </div>
-    </form>
-    
-    <div class="list-header">
-        <h1>Item List</h1>
-        <hr>
-        <button
-            class="clear-all"
-            id="clear-all"
-            onclick="clearAll()">
-            Clear All
-        </button>
-    </div>
+                    id="item-name"
+                    type="text"
+                    placeholder="Input item name"
+                />
+                <input class="add-item" type="submit" value="Add item" />
+            </div>
+            <div class="pq-box">
+                <label class="price-form">
+                    Price per item
+                    <input id="item-price" type="number" value="0" />
+                </label>
+                <label class="quantity-form">
+                    Quantity
+                    <input id="item-quantity" type="number" value="1" />
+                </label>
+            </div>
+        </form>
 
-    <div id="item-list">
-        <!-- <p class="empty-message1">Your list is empty.</p>
+        <div class="list-header">
+            <h1>Item List</h1>
+            <hr />
+            <button class="clear-all" id="clear-all" onclick="clearAll()">
+                Clear All
+            </button>
+        </div>
+
+        <div id="item-list">
+            <!-- <p class="empty-message1">Your list is empty.</p>
         <p class="empty-message2">Add some items to get started!</p> -->
-    </div>
+        </div>
 
-    <div class="price-line">
-        <hr>
-    </div>
+        <div class="price-line">
+            <hr />
+        </div>
 
-    <div id="total-price">
-        <p>Total price : $44</p>
-    </div>
+        <div id="total-price">
+            <p>Total price : $44</p>
+        </div>
 
-    <script src="./main.js"></script>
-</body>
+        <script src="./main.js"></script>
+    </body>
 </html>
